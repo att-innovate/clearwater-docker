@@ -3,6 +3,8 @@ Requires=docker.service
 After=docker.service
 Wants=skydns.service
 After=skydns.service
+Requires=clearwater_sprout.service
+After=clearwater_sprout.service
 
 [Service]
 TimeoutStartSec=0
