@@ -9,4 +9,4 @@ COPY ellis.supervisord.conf /etc/supervisor/conf.d/ellis.conf
 COPY mysql.supervisord.conf /etc/supervisor/conf.d/mysql.conf
 COPY nginx.supervisord.conf /etc/supervisor/conf.d/nginx.conf
 
-EXPOSE 80
+EXPOSE 9080
