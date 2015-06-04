@@ -1,4 +1,4 @@
-FROM att-innovate/base
+FROM att-innovate/clearwater-base
 MAINTAINER maintainers@projectclearwater.org
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes bono
