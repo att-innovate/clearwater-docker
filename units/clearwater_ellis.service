@@ -21,7 +21,7 @@ ExecStartPre=-/usr/bin/docker kill %p
 ExecStartPre=-/usr/bin/docker rm %p
 ExecStartPre=-/usr/bin/docker pull ${image}
 
-ExecStart=/bin/bash -c '/usr/bin/docker run --rm -v /var/log/ellis --name clearwater_ellis -p 22 -p 9080:9080 --link clearwater_homestead:clearwater_homestead --link clearwater_homer:clearwater_homer ${image}'
+ExecStart=/bin/bash -c '/usr/bin/docker run --rm -v /var/log/ellis --name ellis -p 22 -p 9080:9080 --link homestead:homestead --link homer:homer ${image}'
 
 #ExecStartPost=/usr/bin/etcdctl set /skydns/local/cluster/%p '{"host":"${COREOS_PRIVATE_IPV4}"}'
 
