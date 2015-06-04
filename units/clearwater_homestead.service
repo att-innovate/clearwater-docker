@@ -1,0 +1,30 @@
+[Unit]
+Requires=docker.service
+After=docker.service
+Wants=skydns.service
+After=skydns.service
+
+[Service]
+TimeoutStartSec=0
+Type=simple
+Restart=on-failure
+RestartSec=60
+EnvironmentFile=/etc/environment
+
+Environment=nodeArgs=--debug
+Environment=image=yossibh/clearwater-homestead
+Environment=port=8002
+Environment=debugPort=8102
+Environment=srcDir=/home/core/cloudmeter
+
+ExecStartPre=-/usr/bin/docker kill %p
+ExecStartPre=-/usr/bin/docker rm %p
+ExecStartPre=-/usr/bin/docker pull ${image}
+
+ExecStart=/bin/bash -c '/usr/bin/docker run --rm -v /var/log/homestead --name clearwater_homestead -p 22 ${image}'
+
+#ExecStartPost=/usr/bin/etcdctl set /skydns/local/cluster/%p '{"host":"${COREOS_PRIVATE_IPV4}"}'
+
+ExecStop=/usr/bin/docker kill %p
+
+#ExecStopPost=/usr/bin/etcdctl rm /skydns/local/cluster/%p
