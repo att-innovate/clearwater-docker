@@ -3,6 +3,12 @@ Requires=docker.service
 After=docker.service
 Wants=skydns.service
 After=skydns.service
+Requires=clearwater_homestead.service
+After=clearwater_homestead.service
+Requires=clearwater_ralf.service
+After=clearwater_ralf.service
+Requires=clearwater_homer.service
+After=clearwater_homer.service
 
 [Service]
 TimeoutStartSec=0
