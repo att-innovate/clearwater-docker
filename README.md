@@ -2,6 +2,15 @@
 
 This repository contains [Dockerfiles](https://docs.docker.com/reference/builder/) for use with [Docker](https://www.docker.com/) and [Compose](https://docs.docker.com/compose/) to deploy [Project Clearwater](http://www.projectclearwater.org).
 
+## Deploy on Coreos using fleet
+
+The units directory includes .service files for a simple coreos based deployment.
+To use it, clone this repo or copy the units directory to a coreos host machine and run
+    
+    fleetctl start *
+
+The service files pulls the images from docker hub (attinnovate/clearwater-*) and run the containters according to the internal dependecies.
+
 ## Using Compose
 
 There is a [Compose file](minimal-distributed.yaml) to instantiate a minimal (non-fault-tolerant) distributed Clearwater deployment under Docker.  To use it, run
